@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Card Size -->
+    <dimen name="card_corner_primary">8dp</dimen>
+    <dimen name="card_elevation_primary">2dp</dimen>
+
+    <!-- Margin Size -->
+    <dimen name="margin_primary">8dp</dimen>
+    <dimen name="margin_secondary">16dp</dimen>
+
+    <!-- Padding Size -->
+    <dimen name="padding_primary">8dp</dimen>
+
+    <!-- Stroke Size -->
+    <dimen name="stroke_size">1dp</dimen>
+
+    <!-- Text Size -->
+    <dimen name="textPrimaryTitle">20sp</dimen>
+    <dimen name="textPrimarySubtitle">14sp</dimen>
+    <dimen name="textPrimaryBody">14sp</dimen>
+    <dimen name="textPrimaryCaption">12sp</dimen>
+
+</resources>

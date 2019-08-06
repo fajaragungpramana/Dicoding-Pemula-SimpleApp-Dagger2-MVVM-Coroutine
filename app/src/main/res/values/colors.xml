@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Color Opacity -->
+    <color name="colorOpacityText">#80000000</color>
+    <color name="colorOpacityWhite">#CCFFFFFF</color>
+
+    <!-- Color Primary -->
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#999999</color>
+    <color name="colorPrimaryText">#000000</color>
+
+    <!-- colorOther -->
+    <color name="colorAccent">#FF79E2</color>
+    <color name="colorDivide">#EBEBEB</color>
+    <color name="colorProfit">#4CAF50</color>
+
+</resources>

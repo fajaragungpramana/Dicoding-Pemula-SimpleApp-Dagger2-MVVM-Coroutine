@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">WarungKu</string>
+    <string name="splash_msg">Help you manage Grocery Store</string>
+    <string name="welcome_msg">Welcome to WarungKu!</string>
+    <string name="search_item">Search item?</string>
+    <string name="all_stock">All Stock</string>
+    <string name="item_price">Item Price</string>
+    <string name="item_name">Item Name</string>
+    <string name="hello_fajar">Hello, Fajar</string>
+    <string name="exp">1100 XP</string>
+    <string name="fajar_agung_pramana">Fajar Agung Pramana</string>
+    <string name="ex_email">fajaragung9999@gmail.com</string>
+    <string name="user_status">Dicoding Member</string>
+    <string name="sold_out">Sold Out</string>
+    <string name="name">Name</string>
+    <string name="purchase_prices">Purchase Prices</string>
+    <string name="pcs">PCS</string>
+    <string name="std">STD</string>
+    <string name="box">BOX</string>
+    <string name="sell_prices">Sell Prices</string>
+    <string name="stock_totals">Stock Totals</string>
+    <string name="category">Category</string>
+    <string name="Item_category">Item Category</string>
+    <string name="fifty_pcs">50 PCS</string>
+    <string name="fifty_std">50 STD</string>
+    <string name="fifty_box">50 BOX</string>
+    <string name="dummy_price">Rp 2.000</string>
+    <string name="dummy_profit">+20%</string>
+    <string name="dummy_num">50</string>
+</resources>

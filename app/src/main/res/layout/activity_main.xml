@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="user" type="com.implizstudio.android.app.wk.data.model.UserResponse.User" />
+        <variable name="viewModel" type="com.implizstudio.android.app.wk.ui.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:focusableInTouchMode="true"
+        tools:context=".ui.main.MainActivity">
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:onProgressBar="@{viewModel.onProgressBar()}" />
+
+        <TextView
+            android:id="@+id/tv_user_first_name"
+            style="@style/TextTitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_secondary"
+            android:layout_marginTop="@dimen/margin_secondary"
+            app:displayFirstName="@{user.firstName}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="@string/hello_fajar" />
+
+        <TextView
+            android:id="@+id/tv_welcome_msg"
+            style="@style/TextSubtitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_msg"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_user_first_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_first_name"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_to_about"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/margin_secondary"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackground"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_welcome_msg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_user_first_name">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:displayPhotoUser="@{user.photo}"
+                android:scaleType="centerCrop"
+                tools:ignore="ContentDescription" />
+
+        </androidx.cardview.widget.CardView>
+
+        <EditText
+            android:id="@+id/tv_item_search"
+            style="@style/TextBodyStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_secondary"
+            android:layout_marginTop="@dimen/margin_secondary"
+            android:layout_marginEnd="@dimen/margin_primary"
+            android:background="@drawable/bg_search"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="@dimen/padding_primary"
+            android:hint="@string/search_item"
+            android:inputType="text"
+            android:padding="@dimen/padding_primary"
+            android:text="@={viewModel.searchQuery}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/iv_icon_send"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_welcome_msg"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="Autofill" />
+
+        <ImageView
+            android:id="@+id/iv_icon_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.doSearchStock()}"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_send"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_item_search"
+            app:layout_constraintEnd_toEndOf="@+id/cv_to_about"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_item_search"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/tv_all_stock"
+            style="@style/TextCaptionStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_secondary"
+            android:text="@string/all_stock"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tv_item_search"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_search"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_stock"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_all_stock" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

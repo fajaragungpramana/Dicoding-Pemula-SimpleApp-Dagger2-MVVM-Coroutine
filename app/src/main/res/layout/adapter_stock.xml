@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="stock" type="com.implizstudio.android.app.wk.data.model.StockResponse.Stock" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_primary"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardCornerRadius="@dimen/card_corner_primary"
+        app:cardElevation="@dimen/card_elevation_primary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_photo_item"
+                android:layout_width="match_parent"
+                android:layout_height="117dp"
+                android:scaleType="centerCrop"
+                app:displayPhotoStock="@{stock.photo}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:src="@drawable/ic_no_photo"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/tv_name_item"
+                style="@style/TextCaptionStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_primary"
+                android:layout_marginTop="@dimen/margin_primary"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@{stock.name}"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_photo_item"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="@string/item_name"
+                tools:textSize="@dimen/textPrimaryCaption" />
+
+            <TextView
+                android:id="@+id/tv_price_item"
+                style="@style/TextCaptionStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_primary"
+                android:layout_marginBottom="@dimen/margin_primary"
+                android:textStyle="bold"
+                app:displayCurrency="@{stock.sellPricePCS}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_name_item"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name_item"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="@string/item_price"
+                tools:textSize="@dimen/textPrimaryCaption" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>

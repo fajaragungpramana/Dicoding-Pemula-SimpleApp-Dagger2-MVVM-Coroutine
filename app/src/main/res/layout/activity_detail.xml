@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="stock" type="com.implizstudio.android.app.wk.data.model.StockResponse.Stock" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:context=".ui.detail.DetailActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:contentScrim="@android:color/background_light"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:title="@{stock.name}">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    app:displayPhotoStock="@{stock.photo}"
+                    tools:ignore="ContentDescription" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_primary_gradient_image" />
+
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="fill_vertical"
+            android:fillViewport="true"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="120dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_sold_out"
+                        style="@style/TextBodyStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_primary"
+                        android:layout_marginTop="@dimen/margin_secondary"
+                        android:text="@string/sold_out"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/tv_sold_pcs"
+                        style="@style/TextBodyStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_primary"
+                        app:displaySoldPCS="@{stock.soldOutPCS}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/tv_sold_out"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_sold_out"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:text="@string/fifty_pcs" />
+
+                    <TextView
+                        android:id="@+id/tv_sold_std"
+                        style="@style/TextBodyStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:displaySoldSTD="@{stock.soldOutSTD}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_sold_out"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:text="@string/fifty_std" />
+
+                    <TextView
+                        android:id="@+id/tv_sold_box"
+                        style="@style/TextBodyStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_primary"
+                        app:displaySoldBOX="@{stock.soldOutBOX}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_sold_out"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:text="@string/fifty_box" />
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        style="@style/TextSubtitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_secondary"
+                        android:layout_marginBottom="@dimen/margin_primary"
+                        android:text="@string/name"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/tv_sold_pcs"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_sold_pcs"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/tv_item_name"
+                        style="@style/TextBodyStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{stock.name}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/tv_name"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_name"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:text="@string/item_name" />
+
+                    <ImageView
+                        android:id="@+id/iv_edit_item_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_edit"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_item_name"
+                        app:layout_constraintEnd_toEndOf="@+id/tv_sold_box"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_name"
+                        tools:ignore="ContentDescription" />
+
+                    <View
+                        android:id="@+id/v_item_name"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/stroke_size"
+                        android:layout_marginTop="@dimen/margin_secondary"
+                        android:background="@color/colorPrimaryDark"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/iv_edit_item_name"
+                        app:layout_constraintStart_toStartOf="@+id/tv_item_name"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_item_name"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/tv_purchase_prices"
+                        style="@style/TextBodyStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_secondary"
+                        android:text="@string/purchase_prices"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/v_item_name"
+                        app:layout_constraintTop_toBottomOf="@+id/v_item_name"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <ImageView
+                        android:id="@+id/iv_edit_purchase_prices"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_edit"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_purchase_prices"
+                        app:layout_constraintEnd_toEndOf="@+id/v_item_name"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_purchase_prices"
+                        tools:ignore="ContentDescription" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_price_purchases"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_primary"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/iv_edit_purchase_prices"
+                        app:layout_constraintStart_toStartOf="@+id/tv_purchase_prices"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_purchase_prices"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_purchase_pcs"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_primary"
+                            android:layout_marginTop="@dimen/margin_secondary"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground"
+                            app:cardCornerRadius="@dimen/card_corner_primary"
+                            app:cardElevation="@dimen/card_elevation_primary">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margin_secondary"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/TextSubtitleStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/pcs" />
+
+                                <TextView
+                                    style="@style/TextBodyStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:displayCurrency="@{stock.purchasePricePCS}"
+                                    tools:text="@string/dummy_price" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_purchase_std"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_primary"
+                            android:layout_marginTop="@dimen/margin_secondary"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground"
+                            app:cardCornerRadius="@dimen/card_corner_primary"
+                            app:cardElevation="@dimen/card_elevation_primary">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margin_secondary"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/TextSubtitleStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/std" />
+
+                                <TextView
+                                    style="@style/TextBodyStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:displayCurrency="@{stock.purchasePriceSTD}"
+                                    tools:text="@string/dummy_price" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_purchase_box"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_primary"
+                            android:layout_marginTop="@dimen/margin_secondary"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground"
+                            app:cardCornerRadius="@dimen/card_corner_primary"
+                            app:cardElevation="@dimen/card_elevation_primary">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margin_secondary"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/TextSubtitleStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/box" />
+
+                                <TextView
+                                    style="@style/TextBodyStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    app:displayCurrency="@{stock.purchasePriceBOX}"
+                                    tools:text="@string/dummy_price" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/v_stroke_one"
+                        android:layout_width="match_parent"
+                        android:layout_height="16dp"
+                        android:layout_marginTop="@dimen/margin_secondary"
+                        android:background="@color/colorDivide"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ll_price_purchases"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/tv_sell_prices"
+                        style="@style/TextBodyStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_secondary"
+                        android:text="@string/sell_prices"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/ll_price_purchases"
+                        app:layout_constraintTop_toBottomOf="@+id/v_stroke_one"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <ImageView
+                        android:id="@+id/iv_edit_sell_prices"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_edit"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_sell_prices"
+                        app:layout_constraintEnd_toEndOf="@+id/ll_price_purchases"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_sell_prices"
+                        tools:ignore="ContentDescription" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_sell_pcs"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_primary"
+                        android:layout_marginEnd="@dimen/margin_primary"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:cardCornerRadius="@dimen/card_corner_primary"
+                        app:cardElevation="@dimen/card_elevation_primary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_profit_sell_pcs"
+                        app:layout_constraintStart_toStartOf="@+id/tv_sell_prices"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_sell_prices"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_primary"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/TextSubtitleStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/pcs" />
+
+                            <TextView
+                                style="@style/TextBodyStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:displayCurrency="@{stock.sellPricePCS}"
+                                tools:text="@string/dummy_price" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/tv_profit_sell_pcs"
+                        style="@style/TextCaptionStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorProfit"
+                        android:textStyle="bold"
+                        app:purchasePrice="@{stock.purchasePricePCS}"
+                        app:sellPrice="@{stock.sellPricePCS}"
+                        app:layout_constraintBottom_toBottomOf="@+id/cv_sell_pcs"
+                        app:layout_constraintEnd_toEndOf="@+id/iv_edit_sell_prices"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/cv_sell_pcs"
+                        tools:text="@string/dummy_profit" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_sell_std"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_primary"
+                        android:layout_marginEnd="@dimen/margin_primary"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:cardCornerRadius="@dimen/card_corner_primary"
+                        app:cardElevation="@dimen/card_elevation_primary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_profit_sell_std"
+                        app:layout_constraintStart_toStartOf="@+id/cv_sell_pcs"
+                        app:layout_constraintTop_toBottomOf="@+id/cv_sell_pcs"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_primary"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/TextSubtitleStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/std" />
+
+                            <TextView
+                                style="@style/TextBodyStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:displayCurrency="@{stock.sellPriceSTD}"
+                                tools:text="@string/dummy_price" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/tv_profit_sell_std"
+                        style="@style/TextCaptionStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorProfit"
+                        android:textStyle="bold"
+                        app:purchasePrice="@{stock.purchasePriceSTD}"
+                        app:sellPrice="@{stock.sellPriceSTD}"
+                        app:layout_constraintBottom_toBottomOf="@+id/cv_sell_std"
+                        app:layout_constraintEnd_toEndOf="@+id/tv_profit_sell_pcs"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/cv_sell_std"
+                        tools:text="@string/dummy_profit" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv_sell_box"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_primary"
+                        android:layout_marginEnd="@dimen/margin_primary"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?attr/selectableItemBackground"
+                        app:cardCornerRadius="@dimen/card_corner_primary"
+                        app:cardElevation="@dimen/card_elevation_primary"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_profit_sell_box"
+                        app:layout_constraintStart_toStartOf="@+id/cv_sell_std"
+                        app:layout_constraintTop_toBottomOf="@+id/cv_sell_std"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_primary"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/TextSubtitleStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/box" />
+
+                            <TextView
+                                style="@style/TextBodyStyle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:displayCurrency="@{stock.sellPriceBOX}"
+                                tools:text="@string/dummy_price" />
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/tv_profit_sell_box"
+                        style="@style/TextCaptionStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorProfit"
+                        android:textStyle="bold"
+                        app:purchasePrice="@{stock.purchasePriceBOX}"
+                        app:sellPrice="@{stock.sellPriceBOX}"
+                        app:layout_constraintBottom_toBottomOf="@+id/cv_sell_box"
+                        app:layout_constraintEnd_toEndOf="@+id/tv_profit_sell_std"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/cv_sell_box"
+                        tools:text="@string/dummy_profit" />
+
+                    <View
+                        android:id="@+id/v_stroke_two"
+                        android:layout_width="match_parent"
+                        android:layout_height="16dp"
+                        android:layout_marginTop="@dimen/margin_secondary"
+                        android:background="@color/colorDivide"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/cv_sell_box"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/tv_stock_totals"
+                        style="@style/TextBodyStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_secondary"
+                        android:text="@string/stock_totals"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/cv_sell_box"
+                        app:layout_constraintTop_toBottomOf="@+id/v_stroke_two"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <ImageView
+                        android:id="@+id/iv_edit_stock_totals"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_edit"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_stock_totals"
+                        app:layout_constraintEnd_toEndOf="@+id/tv_profit_sell_box"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_stock_totals"
+                        tools:ignore="ContentDescription" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_stock_totals"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_primary"
+                        android:orientation="horizontal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/iv_edit_stock_totals"
+                        app:layout_constraintStart_toStartOf="@+id/tv_stock_totals"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_stock_totals"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_stock_pcs"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_primary"
+                            android:layout_marginTop="@dimen/margin_secondary"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground"
+                            app:cardCornerRadius="@dimen/card_corner_primary"
+                            app:cardElevation="@dimen/card_elevation_primary">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margin_secondary"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/TextSubtitleStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/pcs" />
+
+                                <TextView
+                                    style="@style/TextBodyStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{stock.stockTotalPCS}"
+                                    tools:text="@string/dummy_num" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_stock_std"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_primary"
+                            android:layout_marginTop="@dimen/margin_secondary"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground"
+                            app:cardCornerRadius="@dimen/card_corner_primary"
+                            app:cardElevation="@dimen/card_elevation_primary">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margin_secondary"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/TextSubtitleStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/std" />
+
+                                <TextView
+                                    style="@style/TextBodyStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{stock.stockTotalSTD}"
+                                    tools:text="@string/dummy_num" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/cv_stock_box"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/margin_primary"
+                            android:layout_marginTop="@dimen/margin_secondary"
+                            android:layout_weight="1"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:foreground="?attr/selectableItemBackground"
+                            app:cardCornerRadius="@dimen/card_corner_primary"
+                            app:cardElevation="@dimen/card_elevation_primary">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/margin_secondary"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    style="@style/TextSubtitleStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/box" />
+
+                                <TextView
+                                    style="@style/TextBodyStyle"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@{stock.stockTotalBOX}"
+                                    tools:text="@string/dummy_num" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tv_category"
+                        style="@style/TextSubtitleStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_secondary"
+                        android:text="@string/category"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/ll_stock_totals"
+                        app:layout_constraintTop_toBottomOf="@+id/ll_stock_totals"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/tv_stock_category"
+                        style="@style/TextBodyStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{stock.category}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/tv_category"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_category"
+                        app:layout_constraintVertical_bias="0.0"
+                        tools:text="@string/Item_category" />
+
+                    <ImageView
+                        android:id="@+id/iv_edit_stock_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_edit"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_stock_category"
+                        app:layout_constraintEnd_toEndOf="@+id/ll_stock_totals"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_category"
+                        tools:ignore="ContentDescription" />
+
+                    <View
+                        android:id="@+id/v_item_category"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/stroke_size"
+                        android:layout_marginTop="@dimen/margin_secondary"
+                        android:background="@color/colorPrimaryDark"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/iv_edit_stock_category"
+                        app:layout_constraintStart_toStartOf="@+id/tv_stock_category"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_stock_category"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

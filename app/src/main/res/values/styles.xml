@@ -1,0 +1,43 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
+    <!-- Text Title Style -->
+    <style name="TextTitleStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/source_sans_pro_regular</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/textPrimaryTitle</item>
+    </style>
+
+    <!-- Text Subtitle Style -->
+    <style name="TextSubtitleStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/colorOpacityText</item>
+        <item name="android:textSize">@dimen/textPrimarySubtitle</item>
+    </style>
+
+    <!-- Text Body Style -->
+    <style name="TextBodyStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">@dimen/textPrimaryBody</item>
+    </style>
+
+    <!-- Text Caption Style -->
+    <style name="TextCaptionStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">@dimen/textPrimaryCaption</item>
+    </style>
+
+</resources>
